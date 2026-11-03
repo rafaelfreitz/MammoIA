@@ -444,6 +444,7 @@ ol li p {
     max-width: 460px;
     height: auto;
     justify-self: center;
+    transform: translateY(clamp(56px, 7vw, 80px));
     border-radius: 50%;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, .15), 0 30px 70px rgba(0, 0, 0, .4);
 }
@@ -451,7 +452,7 @@ ol li p {
 /* Celular e tablet: uma coluna, logo em cima */
 @media (max-width: 860px) {
     .projeto-grid { grid-template-columns: 1fr; }
-    .projeto-logo { order: -1; max-width: 300px; }
+    .projeto-logo { order: -1; max-width: 300px; transform: none; }
 }
 
 
