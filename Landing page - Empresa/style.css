@@ -368,17 +368,90 @@ ol li p {
 .projeto {
     background: #10263b;
     color: #fff;
+    padding: clamp(56px, 8vw, 104px) 24px;
 }
 
-.projeto .lead {
+.projeto-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    gap: clamp(32px, 6vw, 72px);
+    align-items: center;            /* centraliza a logo na vertical em relação ao texto */
+}
+ 
+.projeto h2 {
+    margin: 0 0 20px;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    line-height: 1.15;
+    max-width: 20ch;
+}
+ 
+.projeto-intro {
+    margin: 0;
     color: #b9c9d8;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 60ch;
 }
+ 
+.projeto-pontos {
+    margin: 32px 0;
+    border-top: 1px solid rgba(255, 255, 255, .12);
+}
+ 
+.projeto-pontos div {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+ 
+.projeto-pontos dt {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+ 
+.projeto-pontos dd {
+    margin: 0;
+    color: #b9c9d8;
+    line-height: 1.6;
+}
+ 
+.projeto-proposito {
+    margin: 0 0 32px;
+    padding: 4px 0 4px 18px;
+    border-left: 3px solid #17b3ad;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.55;
+}
+ 
+.projeto-botao {
+    display: inline-block;
+    padding: 13px 22px;
+    border-radius: 8px;
+    background: #17b3ad;
+    color: #10263b;
+    font-weight: 700;
+    text-decoration: none;
+    transition: filter .2s;
+}
+ 
+.projeto-botao:hover { filter: brightness(1.1); }
+.projeto-botao:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+ 
 
-.projeto-imagem {
-    width: 50%;
-    aspect-ratio: 2 / 2;
-    object-fit: cover;
-    border-radius: 12px;
+.projeto-logo {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    justify-self: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .15), 0 30px 70px rgba(0, 0, 0, .4);
+}
+ 
+/* Celular e tablet: uma coluna, logo em cima */
+@media (max-width: 860px) {
+    .projeto-grid { grid-template-columns: 1fr; }
+    .projeto-logo { order: -1; max-width: 300px; }
 }
 
 
@@ -386,28 +459,47 @@ ol li p {
 
 .team {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
     margin-top: 26px;
+    justify-content: center;
 }
 
 .member {
+    grid-column: span 2;
     background: #fff;
     border: 1px solid #d5dde3;
     border-radius: 6px;
     padding: 24px;
 }
 
+.member:nth-child(4) {
+    grid-column: 2 / span 2;
+}
+
+.member:nth-child(5) {
+    grid-column: 4 / span 2;
+}
+
 .avatar {
     width: 84px;
     height: 84px;
     border-radius: 50%;
+    overflow: hidden;
     background: #e9dfca;
     color: #10263b;
     display: grid;
     place-items: center;
     font: 800 1.6rem 'Bricolage Grotesque', sans-serif;
     margin-bottom: 16px
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
 }
 
 .member p {
@@ -606,6 +698,12 @@ footer a:hover {
 
     ol, .team {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .member,
+    .member:nth-child(4),
+    .member:nth-child(5) {
+        grid-column: auto;
     }
 
     .cb {
