@@ -474,6 +474,10 @@ ol li p {
   .links.open {
     display: flex;
   }
+
+  .links a {
+    color: #faf9f6;
+  }
 }
 
 .burger {
